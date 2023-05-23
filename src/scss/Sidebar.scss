@@ -1,0 +1,51 @@
+@mixin transitionAll() {
+    transition: all .3s ease-out;
+}
+
+.side {
+    padding-top: 5px;
+    border-top: 1px solid grey;
+    border-right: 1px solid grey;
+    background-color: lightgray;
+
+    @include transitionAll();
+
+    &.is-closed {
+        margin-left: -200px;
+    }
+
+    ul {
+        list-style: none;
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+
+        li {
+            margin: 2px 2px;
+
+            a {
+                background-color: aquamarine;
+                padding: 5px 10px;
+                display: block;
+                text-decoration: none;
+                color: bisque;
+            }
+
+            a:hover {
+                background-color: aqua;
+                padding: 5px 10px;
+                display: block;
+                text-decoration: none;
+                color: aquamarine;
+            }
+
+            a.active {
+                background-color: darkgray;
+                padding: 5px 10px;
+                display: block;
+                text-decoration: none;
+                color: burlywood;
+            }
+        }
+    }
+}

@@ -25,10 +25,7 @@ axios.interceptors.response.use(
     // block to handle error case
     const originalRequest = error.config;
 
-    if (
-      error.response.status === 401 &&
-      originalRequest.url === 'http://dummydomain.com/auth/token'
-    ) {
+    if (error.response.status === 401 && originalRequest.url === 'http://dummydomain.com/auth/token') {
       // Added this condition to avoid infinite loop
 
       // Redirect to any unauthorised route to avoid infinite loop...
@@ -47,8 +44,7 @@ axios.interceptors.response.use(
         .then((res) => {
           if (res.status === 201) {
             localStorage.setItem('auth_token', res.data);
-            axios.defaults.headers.common['Authorization'] =
-              'Bearer ' + localStorage.getItem('auth_token');
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('auth_token');
             return axios(originalRequest);
           }
         });
