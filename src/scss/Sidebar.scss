@@ -6,7 +6,7 @@
     padding-top: 5px;
     border-top: 1px solid grey;
     border-right: 1px solid grey;
-    background-color: lightgray;
+    background-color: white;
 
     @include transitionAll();
 
@@ -24,27 +24,27 @@
             margin: 2px 2px;
 
             a {
-                background-color: aquamarine;
+                background-color: #6ba7c7;
                 padding: 5px 10px;
                 display: block;
                 text-decoration: none;
-                color: bisque;
+                color: #032c41;
             }
 
             a:hover {
-                background-color: aqua;
+                background-color: #333;
                 padding: 5px 10px;
                 display: block;
                 text-decoration: none;
-                color: aquamarine;
+                color: #6ba7c7;
             }
 
             a.active {
-                background-color: darkgray;
+                background-color: #114b6b;
                 padding: 5px 10px;
                 display: block;
                 text-decoration: none;
-                color: burlywood;
+                color: #6ba7c7;
             }
         }
     }

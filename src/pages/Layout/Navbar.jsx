@@ -7,13 +7,13 @@ const Navbar = (props) => {
   const listLink = [
     {
       id: 1,
-      to: 'Event',
-      text: 'Události'
+      to: '/',
+      text: 'Home'
     },
     {
       id: 2,
-      to: 'Event2',
-      text: 'Události2'
+      to: '/Event/Events',
+      text: 'Události'
     }
   ];
 

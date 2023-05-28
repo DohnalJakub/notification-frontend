@@ -3,6 +3,7 @@ import '../../scss/Layout.scss';
 import '../../scss/Sidebar.scss';
 
 const SharedSidebarContent = (props) => {
+  console.log(props);
   return (
     <div className="main">
       <aside className="side">{props.sideBar}</aside>

@@ -3,7 +3,7 @@
         border-bottom: 1px solid grey;
         display: flex;
         flex-direction: row;
-        background-color: grey;
+        background: #22678c;
 
         // div{
         //     border: 1px solid red;
@@ -90,21 +90,23 @@
                     padding: 2px 5px;
                     display: block;
                     text-decoration: none;
+                        background: #6ba7c7;
+                            color: #032c41;
 
                     &:hover {
-                        background-color: darkgray;
                         padding: 2px 5px;
                         display: block;
                         text-decoration: none;
-                        color: #fff;
+                        background: #032c41;
+                        color: #6ba7c7;
                     }
 
                     &.active {
-                        background-color: grey;
                         padding: 2px 5px;
                         display: block;
                         text-decoration: none;
-                        color: #fff;
+                        background: #114b6b;
+                        color: #6ba7c7;
                     }
                 }
 
