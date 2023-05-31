@@ -1,5 +1,7 @@
+@import './Variables.scss';
+
 .footer{
     color: #032c41;
-    background: #6ba7c7;
+    background: $base-color;
     border-color: #114b6b;
 }

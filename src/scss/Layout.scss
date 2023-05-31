@@ -1,3 +1,5 @@
+@import './Variables.scss';
+
 @media screen and (min-width: 37.5em){
     .layout {
         display: grid;
@@ -26,7 +28,7 @@
 body{
     margin: 0;
     font-family: "Helvetica", sans-serif;
-    background-color: white;
+    background-color: $base-background-color;
 }
 
 .main {
