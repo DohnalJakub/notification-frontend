@@ -48,8 +48,8 @@
           ".ts",
           ".tsx"
         ]
-      },
-      "caseSensitive": false
+      }
+      //"caseSensitive": false
     }
   }
 }

@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import './scss/style.scss';
 
@@ -11,9 +11,15 @@ const loading = (
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'));
 
-class App extends Component {
-  render() {
-    return (
+//App.tsx or similar
+import { createTheme, ThemeProvider, useTheme } from '@mui/material';
+import { csCZ } from '@mui/material/locale';
+
+const App = () => {
+  const theme = useTheme(); //replace with your theme/createTheme
+
+  return (
+    <ThemeProvider theme={createTheme(theme, csCZ)}>
       <HashRouter>
         <Suspense fallback={loading}>
           <Routes>
@@ -21,8 +27,8 @@ class App extends Component {
           </Routes>
         </Suspense>
       </HashRouter>
-    );
-  }
-}
+    </ThemeProvider>
+  );
+};
 
 export default App;

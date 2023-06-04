@@ -1,10 +1,10 @@
 import React from 'react';
 
 // Buttons
-const Events = React.lazy(() => import('./views/events/Events'));
-const EventTypes = React.lazy(() => import('./views/events/EventType'));
-const EventPeriod = React.lazy(() => import('./views/events/EventPeriod'));
-const EventPerson = React.lazy(() => import('./views/events/EventPerson'));
+const Events = React.lazy(() => import('./views/eventsModul/events/Events'));
+const EventTypes = React.lazy(() => import('./views/eventsModul/eventTypes/EventType'));
+const EventPeriod = React.lazy(() => import('./views/eventsModul/eventPeriods/EventPeriod'));
+const EventPerson = React.lazy(() => import('./views/eventsModul/eventPersons/EventPerson'));
 const Company = React.lazy(() => import('./views/companies/Company'));
 
 const routes = [
