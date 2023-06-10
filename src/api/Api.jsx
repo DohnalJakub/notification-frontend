@@ -1,13 +1,17 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../../src/settings/config';
+import TokenService from './TokenService';
 
 axios.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('auth_token');
+    const token = TokenService.GetToken();
     if (token) {
       config.headers['Authorization'] = 'Bearer ' + token;
     }
     config.headers['Content-Type'] = 'application/json';
-    return config;
+    config.baseURL = API_BASE_URL;
+    config.withCredentials = false;
+    return Promise.resolve(config);
   },
   (error) => {
     console.log(error);
@@ -25,7 +29,7 @@ axios.interceptors.response.use(
     // block to handle error case
     const originalRequest = error.config;
 
-    if (error.response.status === 401 && originalRequest.url === 'http://dummydomain.com/auth/token') {
+    if (error.response.status === 401 /*&& originalRequest.url === 'http://dummydomain.com/auth/token'*/) {
       // Added this condition to avoid infinite loop
 
       // Redirect to any unauthorised route to avoid infinite loop...
@@ -36,10 +40,11 @@ axios.interceptors.response.use(
       // Code inside this block will refresh the auth token
 
       originalRequest._retry = true;
-      const refreshToken = 'xxxxxxxxxx'; // Write the  logic  or call here the function which is having the login to refresh the token.
+      const user = JSON.parse(localStorage.getItem('user'));
+
       return axios
-        .post('/auth/token', {
-          refresh_token: refreshToken
+        .post('/authenticate/refresh-token', {
+          refresh_token: user.refreshToken
         })
         .then((res) => {
           if (res.status === 201) {

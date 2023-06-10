@@ -7,7 +7,7 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Domů',
-    to: '/domu',
+    to: '/admin/',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />
   },
   {
@@ -17,33 +17,33 @@ const _nav = [
   {
     component: CNavGroup,
     name: 'Události',
-    to: '/udalosti',
+    to: '/admin/udalosti',
     icon: <CIcon icon={cilListRich} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
         name: 'Přehled událostí',
-        to: '/udalosti/prehled'
+        to: '/admin/udalosti/prehled'
       },
       {
         component: CNavItem,
         name: 'Typy událostí',
-        to: '/udalosti/typy-udalosti'
+        to: '/admin/udalosti/typy-udalosti'
       },
       {
         component: CNavItem,
         name: 'Osoby událostí',
-        to: '/udalosti/osoby-udalosti'
+        to: '/admin/udalosti/osoby-udalosti'
       },
       {
         component: CNavItem,
         name: 'Periody událostí',
-        to: '/udalosti/periody-udalosti'
+        to: '/admin/udalosti/periody-udalosti'
       },
       {
         component: CNavItem,
         name: 'Společnosti',
-        to: '/udalosti/spolecnosti'
+        to: '/admin/udalosti/spolecnosti'
       }
     ]
   }
