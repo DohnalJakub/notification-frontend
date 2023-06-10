@@ -17,10 +17,14 @@ import { cilMenu } from '@coreui/icons';
 import { logo } from '../../../../assets/brand/logo';
 import AppHeaderDropdown from './AppHeaderDropdown';
 import AppBreadcrumb from '../../AppBreadcrumb';
+import AuthService from '../../../../api/AuthService';
 
 const AppHeader = () => {
   const dispatch = useDispatch();
   const sidebarShow = useSelector((state) => state.sidebarShow);
+  const logOut = () => {
+    AuthService.logout();
+  };
 
   return (
     <CHeader position="sticky" className="mb-4">
@@ -33,16 +37,15 @@ const AppHeader = () => {
         </CHeaderBrand>
         <CHeaderNav className="d-none d-md-flex me-auto">
           <CNavItem>
-            <CNavLink to="/dashboard" component={NavLink}>
-              Dashboard
+            <CNavLink to="/" component={NavLink}>
+              Domů
             </CNavLink>
           </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Users</CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink href="#">Settings</CNavLink>
-          </CNavItem>
+        </CHeaderNav>
+        <CHeaderNav className="ms-3">
+          <CNavLink to="/" component={NavLink} onClick={logOut}>
+            Odhlasit
+          </CNavLink>
         </CHeaderNav>
         <CHeaderNav className="ms-3">
           <AppHeaderDropdown />
