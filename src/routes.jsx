@@ -3,9 +3,9 @@ import React from 'react';
 // Buttons
 const Home = React.lazy(() => import('./components/layout/default/content/home/home'));
 const Events = React.lazy(() => import('./components/eventModul/events/Events'));
-const EventTypes = React.lazy(() => import('./components/eventModul/eventTypes/EventType'));
+const EventTypes = React.lazy(() => import('./components/eventModul/eventTypes/EventTypes'));
 const EventPeriod = React.lazy(() => import('./components/eventModul/eventPeriods/EventPeriod'));
-const EventPerson = React.lazy(() => import('./components/eventModul/eventPersons/EventPerson'));
+const EventPerson = React.lazy(() => import('./components/eventModul/eventPersons/EventPersonGrid'));
 const Company = React.lazy(() => import('./components/eventModul/companies/Company'));
 const Register = React.lazy(() => import('./pages/register/Register'));
 const Login = React.lazy(() => import('./pages/login/Login'));

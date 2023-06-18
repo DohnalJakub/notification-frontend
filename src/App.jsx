@@ -16,6 +16,9 @@ const AdminLayout = React.lazy(() => import('./components/layout/admin/AdminLayo
 import { createTheme, ThemeProvider, useTheme } from '@mui/material';
 import { csCZ } from '@mui/material/locale';
 import AuthService from './api/AuthService';
+import Events from './components/eventModul/events/Events';
+import EventTypes from './components/eventModul/eventTypes/EventTypes';
+import EventPersonGrid from './components/eventModul/eventPersons/EventPersonGrid';
 
 const App = () => {
   const theme = useTheme(); //replace with your theme/createTheme
@@ -33,15 +36,14 @@ const App = () => {
             <Route path="/" name="Domů" element={<DefaultLayout currentUser={currentUser} />}>
               <Route path="/prihlaseni"></Route>
               <Route path="/registrace"></Route>
-              <Route path="*" />
             </Route>
 
             {currentUser && (
-              <Route path="/admin/" name="Dashboard" element={<AdminLayout />}>
+              <Route path="/admin" name="Dashboard" element={<AdminLayout />}>
                 <Route path="/admin/udalosti/"></Route>
-                <Route path="/admin/udalosti/prehled"></Route>
-                <Route path="/admin/udalosti/typy-udalosti"></Route>
-                <Route path="/admin/udalosti/osoby-udalosti"></Route>
+                <Route path="/admin/udalosti/prehled" element={<Events />}></Route>
+                <Route path="/admin/udalosti/typy-udalosti" element={<EventTypes />}></Route>
+                <Route path="/admin/udalosti/osoby-udalosti" element={<EventPersonGrid />}></Route>
                 <Route path="/admin/udalosti/periody-udalosti"></Route>
                 <Route path="/admin/udalosti/spolecnosti"></Route>
               </Route>

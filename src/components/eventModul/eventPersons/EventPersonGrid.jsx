@@ -1,22 +1,36 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { MaterialReactTable } from 'material-react-table';
 //Import Material React Table Translations
 import { MRT_Localization_CS } from 'material-react-table/locales/cs';
 import { Button } from '@mui/material';
 import CreateModal from './CreateModal';
+import EventPersonService from '../../../services/EventPersonService';
 
-const Events = () => {
+const EventPersonGrid = () => {
   //should be memoized or stable
   const columns = useMemo(
     () => [
       {
-        accessorKey: 'name', //access nested data with dot notation
-        header: 'Název',
+        accessorKey: 'id',
+        header: 'ID',
+        enableColumnOrdering: false,
+        enableEditing: false, //disable editing on this column
+        enableSorting: false,
+        size: 80
+      },
+      {
+        accessorKey: 'firstName', //access nested data with dot notation
+        header: 'Jméno',
         size: 150
       },
       {
-        accessorKey: 'userId',
-        header: 'Osoba',
+        accessorKey: 'lastName',
+        header: 'Přijmení',
+        size: 150
+      },
+      {
+        accessorKey: 'email',
+        header: 'Email',
         size: 150
       }
     ],
@@ -26,9 +40,16 @@ const Events = () => {
   const [createModalOpen, setCreateModalOpen] = useState(false);
   const [tableData, setTableData] = useState([]);
 
-  const handleAddItem = (values) => {
-    console.log(values);
+  useEffect(() => {
+    async function fetchData() {
+      const response = await EventPersonService.GetAll();
+      setTableData(response.data.data);
+    }
+    fetchData();
+  }, []);
 
+  const onSubmit = (values) => {
+    EventPersonService.Create(values);
     tableData.push(values);
     setTableData([...tableData]);
   };
@@ -40,6 +61,8 @@ const Events = () => {
         columns={columns}
         data={tableData}
         enableEditing
+        //onEditingRowSave={handleSaveRowEdits}
+        //onEditingRowCancel={handleCancelRowEdits}
         editingMode="modal" //default
         renderTopToolbarCustomActions={() => (
           <Button color="success" onClick={() => setCreateModalOpen(true)}>
@@ -51,10 +74,10 @@ const Events = () => {
         columns={columns}
         open={createModalOpen}
         onClose={() => setCreateModalOpen(false)}
-        onSubmit={handleAddItem}
+        onSubmit={onSubmit}
       />
     </>
   );
 };
 
-export default Events;
+export default EventPersonGrid;
