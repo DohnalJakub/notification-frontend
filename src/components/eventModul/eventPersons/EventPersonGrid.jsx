@@ -54,6 +54,14 @@ const EventPersonGrid = () => {
     setTableData([...tableData]);
   };
 
+  const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
+    tableData[row.index] = values;
+    EventPersonService.Update(values);
+    //send/receive api updates here, then refetch or update local table data for re-render
+    setTableData([...tableData]);
+    exitEditingMode(); //required to exit editing mode and close modal
+  };
+
   return (
     <>
       <MaterialReactTable
@@ -61,7 +69,7 @@ const EventPersonGrid = () => {
         columns={columns}
         data={tableData}
         enableEditing
-        //onEditingRowSave={handleSaveRowEdits}
+        onEditingRowSave={handleSaveRowEdits}
         //onEditingRowCancel={handleCancelRowEdits}
         editingMode="modal" //default
         renderTopToolbarCustomActions={() => (

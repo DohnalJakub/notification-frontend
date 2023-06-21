@@ -33,14 +33,13 @@ const Create = async (eventPerson) => {
 };
 
 const Update = async (eventPerson) => {
-  console.log(eventPerson);
-  // try {
-  //   return await client.put(BASE_CONTROLLER, eventPerson);
-  // } catch (error) {
-  //   // Handle any errors
-  //   console.error(error);
-  //   throw error;
-  // }
+  try {
+    return await client.put(BASE_CONTROLLER + `/${eventPerson.id}`, eventPerson);
+  } catch (error) {
+    // Handle any errors
+    console.error(error);
+    throw error;
+  }
 };
 
 const EventPersonService = {
