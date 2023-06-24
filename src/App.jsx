@@ -19,6 +19,7 @@ import AuthService from './api/AuthService';
 import Events from './components/eventModul/events/Events';
 import EventTypes from './components/eventModul/eventTypes/EventTypes';
 import EventPersonGrid from './components/eventModul/eventPersons/EventPersonGrid';
+import CompanyGrid from './components/eventModul/companies/CompanyGrid';
 
 const App = () => {
   const theme = useTheme(); //replace with your theme/createTheme
@@ -45,7 +46,7 @@ const App = () => {
                 <Route path="/admin/udalosti/typy-udalosti" element={<EventTypes />}></Route>
                 <Route path="/admin/udalosti/osoby-udalosti" element={<EventPersonGrid />}></Route>
                 <Route path="/admin/udalosti/periody-udalosti"></Route>
-                <Route path="/admin/udalosti/spolecnosti"></Route>
+                <Route path="/admin/udalosti/spolecnosti" element={<CompanyGrid />}></Route>
               </Route>
             )}
           </Routes>

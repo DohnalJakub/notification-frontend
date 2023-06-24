@@ -6,7 +6,7 @@ const Events = React.lazy(() => import('./components/eventModul/events/Events'))
 const EventTypes = React.lazy(() => import('./components/eventModul/eventTypes/EventTypes'));
 const EventPeriod = React.lazy(() => import('./components/eventModul/eventPeriods/EventPeriod'));
 const EventPerson = React.lazy(() => import('./components/eventModul/eventPersons/EventPersonGrid'));
-const Company = React.lazy(() => import('./components/eventModul/companies/Company'));
+const Company = React.lazy(() => import('./components/eventModul/companies/CompanyGrid'));
 const Register = React.lazy(() => import('./pages/register/Register'));
 const Login = React.lazy(() => import('./pages/login/Login'));
 const Page404 = React.lazy(() => import('./pages/page404/Page404'));

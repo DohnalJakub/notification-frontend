@@ -3,7 +3,7 @@ import { MaterialReactTable } from 'material-react-table';
 //Import Material React Table Translations
 import { MRT_Localization_CS } from 'material-react-table/locales/cs';
 import { Button } from '@mui/material';
-import CreateModal from './CreateModal';
+import CreateModal from './CrudModal';
 export const data = [
   {
     id: '9s41rp',

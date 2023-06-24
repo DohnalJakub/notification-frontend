@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField } from '@mui/material';
 
-const CreateModal = ({ open, columns, onClose, onSubmit }) => {
+const CrudModal = ({ open, columns, onClose, onSubmit }) => {
   const [values, setValues] = useState(() =>
     columns.reduce((acc, column) => {
       acc[column.accessorKey ?? ''] = '';
@@ -17,7 +17,7 @@ const CreateModal = ({ open, columns, onClose, onSubmit }) => {
 
   return (
     <Dialog open={open}>
-      <DialogTitle textAlign="center">Vytvořit novou událost</DialogTitle>
+      <DialogTitle textAlign="center">Přidat novou osobu pro událost</DialogTitle>
       <DialogContent>
         <form onSubmit={(e) => e.preventDefault()}>
           <Stack
@@ -49,4 +49,4 @@ const CreateModal = ({ open, columns, onClose, onSubmit }) => {
   );
 };
 
-export default CreateModal;
+export default CrudModal;
