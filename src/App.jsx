@@ -16,10 +16,10 @@ const AdminLayout = React.lazy(() => import('./components/layout/admin/AdminLayo
 import { createTheme, ThemeProvider, useTheme } from '@mui/material';
 import { csCZ } from '@mui/material/locale';
 import AuthService from './api/AuthService';
-import Events from './components/eventModul/events/Events';
-import EventTypes from './components/eventModul/eventTypes/EventTypes';
+import EventTypes from './components/eventModul/eventTypes/EventTypeGrid';
 import EventPersonGrid from './components/eventModul/eventPersons/EventPersonGrid';
 import CompanyGrid from './components/eventModul/companies/CompanyGrid';
+import EventGrid from './components/eventModul/events/EventGrid';
 
 const App = () => {
   const theme = useTheme(); //replace with your theme/createTheme
@@ -42,7 +42,7 @@ const App = () => {
             {currentUser && (
               <Route path="/admin" name="Dashboard" element={<AdminLayout />}>
                 <Route path="/admin/udalosti/"></Route>
-                <Route path="/admin/udalosti/prehled" element={<Events />}></Route>
+                <Route path="/admin/udalosti/prehled" element={<EventGrid />}></Route>
                 <Route path="/admin/udalosti/typy-udalosti" element={<EventTypes />}></Route>
                 <Route path="/admin/udalosti/osoby-udalosti" element={<EventPersonGrid />}></Route>
                 <Route path="/admin/udalosti/periody-udalosti"></Route>

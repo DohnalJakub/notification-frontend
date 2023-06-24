@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField } from '@mui/material';
 
-const CrudModal = ({ open, columns, onClose, onSubmit }) => {
+const CreateModal = ({ open, columns, onClose, onSubmit }) => {
   const [values, setValues] = useState(() =>
     columns.reduce((acc, column) => {
       acc[column.accessorKey ?? ''] = '';
@@ -46,4 +46,4 @@ const CrudModal = ({ open, columns, onClose, onSubmit }) => {
   );
 };
 
-export default CrudModal;
+export default CreateModal;

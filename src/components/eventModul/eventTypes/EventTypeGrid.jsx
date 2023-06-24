@@ -5,9 +5,9 @@ import { MRT_Localization_CS } from 'material-react-table/locales/cs';
 import { Box, Button, IconButton, Tooltip } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
 import CreateModal from './CreateModal';
-import EventPersonService from '../../../services/EventPersonService';
+import EventTypeService from '../../../services/EventTypeService';
 
-const EventPersonGrid = () => {
+const EventTypeGrid = () => {
   //should be memoized or stable
   const columns = useMemo(
     () => [
@@ -20,18 +20,8 @@ const EventPersonGrid = () => {
         size: 80
       },
       {
-        accessorKey: 'firstName', //access nested data with dot notation
-        header: 'Jméno',
-        size: 150
-      },
-      {
-        accessorKey: 'lastName',
-        header: 'Přijmení',
-        size: 150
-      },
-      {
-        accessorKey: 'email',
-        header: 'Email',
+        accessorKey: 'name', //access nested data with dot notation
+        header: 'Název společnosti',
         size: 150
       }
     ],
@@ -44,28 +34,28 @@ const EventPersonGrid = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await EventPersonService.GetAll();
+      const response = await EventTypeService.GetAll();
       setTableData(response.data.data);
     }
     fetchData();
   }, [refreshData]);
 
   const onSubmit = async (values) => {
-    await EventPersonService.Create(values);
+    await EventTypeService.Create(values);
     setRefreshData(Date.now());
   };
 
   const handleSaveRowEdits = async ({ exitEditingMode, values }) => {
-    await EventPersonService.Update(values);
-    exitEditingMode(); //required to exit editing mode and close modal
+    await EventTypeService.Update(values);
     setRefreshData(Date.now());
+    exitEditingMode(); //required to exit editing mode and close modal
   };
 
   const handleDeleteRow = async (row) => {
-    if (!confirm(`Opravdu chcete smazat záznam: ${row.getValue('firstName')} ${row.getValue('lastName')}`)) {
+    if (!confirm(`Opravdu chcete smazat záznam: ${row.getValue('name')}`)) {
       return;
     }
-    await EventPersonService.Delete(row.getValue('id'));
+    await EventTypeService.Delete(row.getValue('id'));
     setRefreshData(Date.now());
   };
 
@@ -109,4 +99,4 @@ const EventPersonGrid = () => {
   );
 };
 
-export default EventPersonGrid;
+export default EventTypeGrid;

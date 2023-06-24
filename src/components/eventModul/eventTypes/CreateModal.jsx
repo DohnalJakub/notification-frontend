@@ -17,7 +17,7 @@ const CreateModal = ({ open, columns, onClose, onSubmit }) => {
 
   return (
     <Dialog open={open}>
-      <DialogTitle textAlign="center">Vytvořit novou událost</DialogTitle>
+      <DialogTitle textAlign="center">Vytvořit nový typ události</DialogTitle>
       <DialogContent>
         <form onSubmit={(e) => e.preventDefault()}>
           <Stack
@@ -27,15 +27,13 @@ const CreateModal = ({ open, columns, onClose, onSubmit }) => {
               gap: '1rem'
             }}
           >
-            {columns.map((column) => (
-              <TextField
-                key={column.accessorKey}
-                label={column.header}
-                name={column.accessorKey}
-                variant="filled"
-                onChange={(e) => setValues({ ...values, [e.target.name]: e.target.value })}
-              />
-            ))}
+            <TextField
+              key={'name'}
+              label={'Název typu společnosti'}
+              name={'name'}
+              variant="filled"
+              onChange={(e) => setValues({ ...values, [e.target.name]: e.target.value })}
+            />
           </Stack>
         </form>
       </DialogContent>

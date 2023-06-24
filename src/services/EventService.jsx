@@ -1,6 +1,6 @@
 import ApiService from '../api/ApiService';
 
-const BASE_CONTROLLER = 'event-type';
+const BASE_CONTROLLER = 'event';
 
 const GetById = async (id) => {
   try {
@@ -52,7 +52,7 @@ const Delete = async (id) => {
   }
 };
 
-const CompanyService = {
+const EventService = {
   GetById,
   GetAll,
   Create,
@@ -60,4 +60,4 @@ const CompanyService = {
   Delete
 };
 
-export default CompanyService;
+export default EventService;

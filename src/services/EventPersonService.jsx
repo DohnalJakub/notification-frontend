@@ -22,9 +22,9 @@ const GetAll = () => {
   }
 };
 
-const Create = async (eventPerson) => {
+const Create = async (company) => {
   try {
-    return await ApiService.create(BASE_CONTROLLER, eventPerson);
+    return await ApiService.create(BASE_CONTROLLER, company);
   } catch (error) {
     // Handle any errors
     console.error(error);
@@ -32,9 +32,9 @@ const Create = async (eventPerson) => {
   }
 };
 
-const Update = async (eventPerson) => {
+const Update = async (company) => {
   try {
-    return await ApiService.updatePut(BASE_CONTROLLER, eventPerson);
+    return await ApiService.updatePut(BASE_CONTROLLER, company);
   } catch (error) {
     // Handle any errors
     console.error(error);
@@ -52,7 +52,7 @@ const Delete = async (id) => {
   }
 };
 
-const EventPersonService = {
+const CompanyService = {
   GetById,
   GetAll,
   Create,
@@ -60,4 +60,4 @@ const EventPersonService = {
   Delete
 };
 
-export default EventPersonService;
+export default CompanyService;
