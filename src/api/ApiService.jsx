@@ -16,12 +16,12 @@ const create = (urlPart, data) => {
   return client.post(urlPart, data);
 };
 
-const updatePut = (urlPart, id, data) => {
-  return client.put(`${urlPart}/${id}`, data);
+const updatePut = (urlPart, data) => {
+  return client.put(`${urlPart}/${data.id}`, data);
 };
 
-const updatePatch = (urlPart, id, data) => {
-  return client.patch(`${urlPart}/${id}`, data);
+const updatePatch = (urlPart, data) => {
+  return client.patch(`${urlPart}/${data.id}`, data);
 };
 
 const remove = (urlPart, id) => {

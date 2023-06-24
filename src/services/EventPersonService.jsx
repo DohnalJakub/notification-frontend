@@ -1,10 +1,10 @@
-import client from '../api/Api';
+import ApiService from '../api/ApiService';
 
 const BASE_CONTROLLER = 'event-person';
 
 const GetById = async (id) => {
   try {
-    return await client.get(BASE_CONTROLLER + `/${id}`);
+    return await ApiService.get(BASE_CONTROLLER + `/${id}`);
   } catch (error) {
     // Handle any errors
     console.error(error);
@@ -14,7 +14,7 @@ const GetById = async (id) => {
 
 const GetAll = () => {
   try {
-    return client.get(BASE_CONTROLLER);
+    return ApiService.getAll(BASE_CONTROLLER);
   } catch (error) {
     // Handle any errors
     console.error(error);
@@ -24,7 +24,7 @@ const GetAll = () => {
 
 const Create = async (eventPerson) => {
   try {
-    return await client.post(BASE_CONTROLLER, eventPerson);
+    return await ApiService.create(BASE_CONTROLLER, eventPerson);
   } catch (error) {
     // Handle any errors
     console.error(error);
@@ -34,7 +34,17 @@ const Create = async (eventPerson) => {
 
 const Update = async (eventPerson) => {
   try {
-    return await client.put(BASE_CONTROLLER + `/${eventPerson.id}`, eventPerson);
+    return await ApiService.updatePut(BASE_CONTROLLER, eventPerson);
+  } catch (error) {
+    // Handle any errors
+    console.error(error);
+    throw error;
+  }
+};
+
+const Delete = async (id) => {
+  try {
+    return await ApiService.remove(BASE_CONTROLLER, id);
   } catch (error) {
     // Handle any errors
     console.error(error);
@@ -46,7 +56,8 @@ const EventPersonService = {
   GetById,
   GetAll,
   Create,
-  Update
+  Update,
+  Delete
 };
 
 export default EventPersonService;

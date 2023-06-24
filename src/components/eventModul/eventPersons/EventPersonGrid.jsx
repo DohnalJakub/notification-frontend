@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { MaterialReactTable } from 'material-react-table';
 //Import Material React Table Translations
 import { MRT_Localization_CS } from 'material-react-table/locales/cs';
-import { Button } from '@mui/material';
+import { Box, Button, IconButton, Tooltip } from '@mui/material';
+import { Delete, Edit } from '@mui/icons-material';
 import CreateModal from './CreateModal';
 import EventPersonService from '../../../services/EventPersonService';
 
@@ -62,6 +63,20 @@ const EventPersonGrid = () => {
     exitEditingMode(); //required to exit editing mode and close modal
   };
 
+  const handleDeleteRow = useCallback(
+    (row) => {
+      if (!confirm(`Opravdu chcete smazat záznam ${row.getValue('firstName')} ${row.getValue('lastName')}`)) {
+        return;
+      }
+      console.log(row);
+      EventPersonService.Delete(row.getValue('id'));
+      //send api delete request here, then refetch or update local table data for re-render
+      tableData.splice(row.index, 1);
+      setTableData([...tableData]);
+    },
+    [tableData]
+  );
+
   return (
     <>
       <MaterialReactTable
@@ -76,6 +91,20 @@ const EventPersonGrid = () => {
           <Button color="success" onClick={() => setCreateModalOpen(true)}>
             Vytvořit
           </Button>
+        )}
+        renderRowActions={({ row, table }) => (
+          <Box sx={{ display: 'flex', gap: '1rem' }}>
+            <Tooltip arrow placement="left" title="Upravit">
+              <IconButton onClick={() => table.setEditingRow(row)}>
+                <Edit />
+              </IconButton>
+            </Tooltip>
+            <Tooltip arrow placement="right" title="Smazat">
+              <IconButton color="error" onClick={() => handleDeleteRow(row)}>
+                <Delete />
+              </IconButton>
+            </Tooltip>
+          </Box>
         )}
       />
       <CreateModal
